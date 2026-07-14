@@ -1,0 +1,13 @@
+/* ================================================================
+   PEKE-ARI — ANIMATIONS.CSS
+   ================================================================
+   Este archivo se deja preparado para separar aqui las animaciones
+   @keyframes si en algun momento quieres organizarlas aparte.
+
+   Por ahora, todas las animaciones del sitio (loader, botón de
+   WhatsApp, estado del local, indicador de scroll del hero, etc.)
+   ya funcionan correctamente dentro de css/style.css, así que este
+   archivo puede quedar vacío sin que nada se rompa.
+
+   Ver la sección 16 de README.txt para más detalle.
+   ================================================================ */

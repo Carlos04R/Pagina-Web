@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!--=============================================-->
+<!--CONFIGURACIÓN BÁSICA-->
+<!--=============================================-->
+<meta charset="UTF-8">
+
+<!-- ============================================= -->
+<!-- ANTI-FLASH DE MODO OSCURO -->
+<!-- Aplica el tema guardado ANTES de pintar la pagina, -->
+<!-- para evitar el parpadeo claro-oscuro. -->
+<!-- Debe ir siempre antes de los <link> de CSS. -->
+<!-- ============================================= -->
+<script>
+  (function(){
+    try {
+      var CLAVE = "peke-ari-tema"; // misma clave que usa js/darkmode.js
+      var guardado = localStorage.getItem(CLAVE);
+      var prefiereOscuro = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (guardado === "oscuro" || (!guardado && prefiereOscuro)) {
+        document.documentElement.setAttribute("data-tema", "oscuro");
+      }
+    } catch (e) {
+      // Si localStorage falla (modo privado, etc.), se queda en modo
+      // claro por defecto, sin romper nada.
+    }
+  })();
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================= -->
+<!-- SEO — EDITAR AQUÍ LOS DATOS DEL NEGOCIO -->
+<!-- ============================================= -->
+<title>PEKE-ARI | Papelería, Útiles Escolares, Impresiones y Trabajos Académicos</title>
+<meta name="description" content="PEKE-ARI: papelería, útiles escolares y universitarios, impresiones, copias, trabajos académicos, anillados y snacks. Calidad y rapidez para tus proyectos.">
+<meta name="keywords" content="papelería, útiles escolares, impresiones, copias, trabajos académicos, anillados, snacks, PEKE-ARI">
+<meta name="author" content="PEKE-ARI">
+<meta name="robots" content="index, follow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- CAMBIAR URL CANÓNICA AQUÍ -->
+<link rel="canonical" href="https://www.pekeari.com/">
+
+<!-- Open Graph (vista previa al compartir en redes sociales) -->
+<meta property="og:title" content="PEKE-ARI | Papelería y Servicios de Impresión">
+<meta property="og:description" content="Todo lo que necesitas para tus tareas, proyectos y trabajos académicos en un solo lugar.">
+<!-- CAMBIAR IMAGEN DE VISTA PREVIA AQUÍ -->
+<meta property="og:image" content="img/banners/banner.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_EC">
+
+<!-- Favicon — CAMBIAR ICONO AQUÍ -->
+<link rel="icon" type="image/png" href="img/logo/logotipo.png">
+
+<!-- ============================================= -->
+<!-- FUENTES: Poppins (display) + Plus Jakarta Sans (texto) -->
+<!-- ============================================= -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome (iconos) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- AOS (animaciones al hacer scroll) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+
+<!-- ============================================= -->
+<!-- HOJAS DE ESTILO DEL PROYECTO -->
+<!-- ============================================= -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/darkmode.css">
+<link rel="stylesheet" href="css/mejoras.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<!-- ============================================= -->
+<!-- SEO — DATOS ESTRUCTURADOS (Google / buscadores) -->
+<!-- CAMBIAR DATOS DEL NEGOCIO AQUÍ si difieren de los de Contacto -->
+<!-- ============================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "PEKE-ARI",
+  "image": "https://www.pekeari.com/img/banners/banner.jpg",
+  "url": "https://www.pekeari.com/",
+  "telephone": "+593967245131",
+  "email": "contacto@pekeari.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Parrales y Guales",
+    "addressLocality": "Jipijapa",
+    "addressRegion": "Manabí",
+    "addressCountry": "EC"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "19:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00" }
+  ]
+}
+</script>
+
+</head>
+<body>
+
+<!-- ============================================= -->
+<!-- LOADER — animación mostrada antes de cargar el sitio -->
+<!-- ============================================= -->
+<div id="loader">
+  <div class="loader-contenido">
+    <!-- CAMBIAR LOGO AQUÍ (versión para loader) -->
+    <img src="img/logo/logotipo.png" alt="Cargando PEKE-ARI" class="loader-logo">
+    <div class="loader-barra"><span></span></div>
+  </div>
+</div>
+
+<!-- Cursor personalizado (decorativo, se oculta en móvil vía CSS) -->
+<div class="cursor-punto" aria-hidden="true"></div>
+<div class="cursor-anillo" aria-hidden="true"></div>
+
+<!-- Botón volver arriba -->
+<button id="btnArriba" aria-label="Volver arriba" title="Volver arriba">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<!-- Botón flotante de WhatsApp -->
+<!-- CAMBIAR NÚMERO DE WHATSAPP AQUÍ (formato internacional sin +) -->
+<a href="https://wa.me/593967245131?text=Hola%20PEKE-ARI,%20quisiera%20más%20información"
+   class="whatsapp-flotante" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- ============================================= -->
+<!-- BARRA DE NAVEGACIÓN — Sticky, transparente al inicio -->
+<!-- ============================================= -->
+<header id="navBar">
+  <nav class="nav-contenedor">
+
+    <a href="#inicio" class="nav-logo">
+      <!-- CAMBIAR LOGO AQUÍ (versión para navbar) -->
+      <img src="img/logo/panda.png" alt="Logotipo PEKE-ARI">
+      <span>PEKE-ARI</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio" class="activo">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#promociones">Promociones</a></li>
+      <li><a href="#academicos">Trabajos Académicos</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <div class="nav-herramientas">
+
+      <!-- Buscador rápido de la navbar -->
+      <div class="nav-buscador">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="navBuscar" placeholder="Buscar producto o servicio...">
+      </div>
+
+      <!-- Botón de modo oscuro -->
+      <button id="btnModoOscuro" aria-label="Cambiar modo oscuro">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+
+      <!-- Menú hamburguesa (móvil) -->
+      <button id="btnHamburguesa" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+
+  </nav>
+</header>
+
+<!-- ============================================= -->
+<!-- HERO — Landing principal -->
+<!-- ============================================= -->
+<section id="inicio" class="hero">
+
+  <!-- CAMBIAR VIDEO AQUÍ -->
+  <video class="hero-video" autoplay muted loop playsinline poster="img/banners/banner.jpg">
+    <source src="video/cinematica1.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay"></div>
+
+  <!-- Formas decorativas tipo "recorte de papel" (identidad de papelería) -->
+  <div class="hero-forma hero-forma-1" data-parallax="0.15" aria-hidden="true"></div>
+  <div class="hero-forma hero-forma-2" data-parallax="0.3" aria-hidden="true"></div>
+
+  <div class="hero-contenido" data-aos="fade-up">
+
+    <!-- CAMBIAR LOGO AQUÍ (versión para hero) -->
+    <img src="img/logo/panda.png" alt="PEKE-ARI" class="hero-logo">
+
+    <h1 class="hero-titulo">PEKE-ARI</h1>
+
+    <!-- CAMBIAR ESLOGAN AQUÍ -->
+    <p class="hero-eslogan">Todo lo que tu próxima idea necesita, en un solo lugar</p>
+
+    <!-- CAMBIAR TEXTO DESCRIPTIVO AQUÍ -->
+    <p class="hero-descripcion">
+      Papelería, útiles escolares y universitarios, impresiones, copias, trabajos
+      académicos y snacks. Rápido, confiable y hecho para ti.
+    </p>
+
+    <div class="hero-botones">
+      <a href="#servicios" class="btn btn-primario">Ver Servicios</a>
+      <a href="#catalogo" class="btn btn-secundario">Ver Catálogo</a>
+      <!-- CAMBIAR NÚMERO DE WHATSAPP AQUÍ -->
+      <a href="https://wa.me/593967245131" target="_blank" rel="noopener" class="btn btn-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i> Contactar
+      </a>
+    </div>
+
+  </div>
+
+  <a href="#nosotros" class="hero-scroll" aria-label="Bajar">
+    <span></span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </a>
+
+</section>
+
+<!-- ============================================= -->
+<!-- NOSOTROS -->
+<!-- CAMBIAR HISTORIA / MISIÓN / VISIÓN / VALORES AQUÍ -->
+<!-- ============================================= -->
+<section id="nosotros" class="seccion nosotros">
+  <div class="contenedor">
+
+    <div class="nosotros-grid">
+
+      <!-- Columna de historia -->
+      <div class="nosotros-historia" data-aos="fade-right">
+        <span class="eyebrow">Nosotros</span>
+        <h2 class="titulo-seccion">Más que una papelería, un aliado para tus proyectos</h2>
+        <!-- CAMBIAR TEXTO DE HISTORIA AQUÍ -->
+        <p class="nosotros-texto">
+          PEKE-ARI nació de una idea sencilla: que encontrar todo lo necesario para una
+          tarea, un proyecto universitario o un trabajo de última hora no debería tomar
+          toda la mañana. Empezamos como un pequeño local de copias e impresiones y,
+          gracias a la confianza de nuestros clientes, fuimos sumando papelería,
+          útiles escolares, trabajos académicos y hasta un rincón de snacks para esas
+          jornadas largas de estudio.
+        </p>
+        <p class="nosotros-texto">
+          Hoy seguimos con la misma esencia de negocio de barrio, pero con procesos
+          rápidos, atención cercana y la calidad que un trabajo bien hecho merece.
+        </p>
+      </div>
+
+      <!-- Columna de misión / visión / valores -->
+      <div class="nosotros-tarjetas" data-aos="fade-left">
+
+        <div class="mini-tarjeta">
+          <i class="fa-solid fa-bullseye"></i>
+          <div>
+            <h3>Misión</h3>
+            <!-- CAMBIAR MISIÓN AQUÍ -->
+            <p>Ofrecer productos de papelería y servicios de impresión y trabajos
+              académicos con calidad, rapidez y atención personalizada.</p>
+          </div>
+        </div>
+
+        <div class="mini-tarjeta">
+          <i class="fa-solid fa-eye"></i>
+          <div>
+            <h3>Visión</h3>
+            <!-- CAMBIAR VISIÓN AQUÍ -->
+            <p>Ser el negocio de referencia en papelería y servicios de impresión de
+              la zona, reconocido por nuestra rapidez, calidez y compromiso.</p>
+          </div>
+        </div>
+
+        <div class="mini-tarjeta">
+          <i class="fa-solid fa-heart"></i>
+          <div>
+            <h3>Valores</h3>
+            <!-- CAMBIAR VALORES AQUÍ -->
+            <p>Responsabilidad, rapidez, calidad y cercanía con cada cliente que
+              confía en nosotros.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Contadores animados -->
+    <div class="contadores">
+
+      <div class="contador-item" data-aos="fade-up">
+        <span class="contador-numero" data-contador="1200">0</span>
+        <p>Clientes atendidos</p>
+      </div>
+
+      <div class="contador-item" data-aos="fade-up" data-aos-delay="100">
+        <span class="contador-numero" data-contador="35000">0</span>
+        <p>Copias e impresiones</p>
+      </div>
+
+      <div class="contador-item" data-aos="fade-up" data-aos-delay="200">
+        <span class="contador-numero" data-contador="80">0</span>
+        <p>Productos disponibles</p>
+      </div>
+
+      <!-- CAMBIAR AÑOS DE EXPERIENCIA AQUÍ -->
+      <div class="contador-item" data-aos="fade-up" data-aos-delay="300">
+        <span class="contador-numero" data-contador="5">0</span>
+        <p>Años de experiencia</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- SERVICIOS -->
+<!-- CAMBIAR / AGREGAR SERVICIOS AQUÍ (copiar un .servicio-tarjeta) -->
+<!-- ============================================= -->
+<section id="servicios" class="seccion servicios">
+  <div class="contenedor">
+
+    <div class="encabezado-seccion" data-aos="fade-up">
+      <span class="eyebrow">Servicios</span>
+      <h2 class="titulo-seccion">Todo listo, sin vueltas</h2>
+      <p class="subtitulo-seccion">
+        Copiado, impresión, trabajos académicos y más, con la calidad y la rapidez
+        que tu tiempo merece.
+      </p>
+    </div>
+
+    <div class="servicios-grid">
+
+      <div class="servicio-tarjeta" data-aos="fade-up">
+        <div class="servicio-icono"><i class="fa-solid fa-copy"></i></div>
+        <h3>Copias</h3>
+        <p>Copias a blanco y negro o a color, en el momento y al mejor precio.</p>
+        <a href="#contacto" class="servicio-link">Solicitar <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="servicio-tarjeta" data-aos="fade-up" data-aos-delay="80">
+        <div class="servicio-icono"><i class="fa-solid fa-print"></i></div>
+        <h3>Impresiones</h3>
+        <p>Documentos, imágenes y proyectos en distintos tamaños y tipos de papel.</p>
+        <a href="#contacto" class="servicio-link">Solicitar <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="servicio-tarjeta" data-aos="fade-up" data-aos-delay="160">
+        <div class="servicio-icono"><i class="fa-solid fa-file-image"></i></div>
+        <h3>Escaneos</h3>
+        <p>Digitaliza tus documentos físicos en formato PDF o imagen en minutos.</p>
+        <a href="#contacto" class="servicio-link">Solicitar <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="servicio-tarjeta" data-aos="fade-up">
+        <div class="servicio-icono"><i class="fa-solid fa-ring"></i></div>
+        <h3>Anillados</h3>
+        <p>Anillados de tesis, informes y proyectos con acabado profesional.</p>
+        <a href="#contacto" class="servicio-link">Solicitar <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="servicio-tarjeta" data-aos="fade-up" data-aos-delay="80">
+        <div class="servicio-icono"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>Laminados y Plastificados</h3>
+        <p>Protege documentos, carnets y material didáctico con acabado brillante.</p>
+        <a href="#contacto" class="servicio-link">Solicitar <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="servicio-tarjeta" data-aos="fade-up" data-aos-delay="160">
+        <div class="servicio-icono"><i class="fa-solid fa-keyboard"></i></div>
+        <h3>Digitación</h3>
+        <p>Transcribimos tus documentos manuscritos o fotografiados a formato digital.</p>
+        <a href="#contacto" class="servicio-link">Solicitar <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="servicio-tarjeta" data-aos="fade-up">
+        <div class="servicio-icono"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h3>Trabajos Académicos</h3>
+        <p>Investigaciones, ensayos, informes y presentaciones con formato correcto.</p>
+        <a href="#academicos" class="servicio-link">Ver más <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="servicio-tarjeta" data-aos="fade-up" data-aos-delay="80">
+        <div class="servicio-icono"><i class="fa-solid fa-pen-ruler"></i></div>
+        <h3>Diseño y Formato APA</h3>
+        <p>Diseño de documentos y aplicación de normas APA para trabajos académicos.</p>
+        <a href="#contacto" class="servicio-link">Solicitar <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="servicio-tarjeta" data-aos="fade-up" data-aos-delay="160">
+        <div class="servicio-icono"><i class="fa-solid fa-book"></i></div>
+        <h3>Encuadernados</h3>
+        <p>Encuadernado de tesis, portafolios y proyectos con distintos acabados.</p>
+        <a href="#contacto" class="servicio-link">Solicitar <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="servicio-tarjeta" data-aos="fade-up">
+        <div class="servicio-icono"><i class="fa-solid fa-id-card"></i></div>
+        <h3>Currículums y Hojas de Vida</h3>
+        <p>Redacción y diseño de currículums que destacan tu perfil profesional.</p>
+        <a href="#contacto" class="servicio-link">Solicitar <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="servicio-tarjeta" data-aos="fade-up" data-aos-delay="80">
+        <div class="servicio-icono"><i class="fa-solid fa-chalkboard"></i></div>
+        <h3>Material Didáctico</h3>
+        <p>Elaboramos material educativo para docentes, talleres y capacitaciones.</p>
+        <a href="#contacto" class="servicio-link">Solicitar <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- CATÁLOGO DE PRODUCTOS -->
+<!-- Los productos se cargan dinámicamente desde js/catalogo.js -->
+<!-- CAMBIAR PRODUCTOS AQUÍ: editar el arreglo "productos" en js/catalogo.js -->
+<!-- ============================================= -->
+<section id="catalogo" class="seccion catalogo">
+  <div class="contenedor">
+
+    <div class="encabezado-seccion" data-aos="fade-up">
+      <span class="eyebrow">Catálogo</span>
+      <h2 class="titulo-seccion">Encuentra lo que necesitas</h2>
+      <p class="subtitulo-seccion">
+        Útiles escolares, papelería, copias e impresiones, juguetes, manualidades, snacks y más.
+      </p>
+    </div>
+
+    <!-- Buscador y orden del catálogo -->
+    <div class="catalogo-controles" data-aos="fade-up">
+      <div class="catalogo-buscador">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="catalogoBuscar" placeholder="Buscar producto por nombre...">
+      </div>
+
+      <div class="catalogo-orden">
+        <label for="catalogoOrden" class="visualmente-oculto">Ordenar productos</label>
+        <select id="catalogoOrden">
+          <option value="relevancia">Ordenar por: Relevancia</option>
+          <option value="destacados">Destacados primero</option>
+          <option value="nombre-asc">Nombre (A-Z)</option>
+          <option value="nombre-desc">Nombre (Z-A)</option>
+          <option value="precio-asc">Precio (menor a mayor)</option>
+          <option value="precio-desc">Precio (mayor a menor)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Filtro por categorías -->
+    <div class="catalogo-filtros" id="catalogoFiltros" data-aos="fade-up">
+      <button class="filtro-btn activo" data-categoria="todos">Todas</button>
+      <button class="filtro-btn" data-categoria="Útiles escolares">Útiles escolares</button>
+      <button class="filtro-btn" data-categoria="Papelería">Papelería</button>
+      <button class="filtro-btn" data-categoria="Copias e Impresiones">Copias e Impresiones</button>
+      <button class="filtro-btn" data-categoria="Juguetes">Juguetes</button>
+      <button class="filtro-btn" data-categoria="Manualidades">Manualidades</button>
+      <button class="filtro-btn" data-categoria="Snacks">Snacks</button>
+      <button class="filtro-btn" data-categoria="Otros">Otros</button>
+    </div>
+
+    <!-- Contenedor donde catalogo.js inyecta las tarjetas de producto -->
+    <div class="catalogo-grid" id="catalogoGrid">
+      <!-- Tarjetas de producto generadas por JavaScript -->
+    </div>
+
+    <!-- Mensaje cuando no hay resultados -->
+    <p class="catalogo-vacio" id="catalogoVacio">
+      No encontramos productos con ese nombre o categoría. Prueba con otra búsqueda.
+    </p>
+
+    <!-- Carga progresiva ("cargar más" en vez de paginación clásica) -->
+    <div class="catalogo-cargar-mas-caja">
+      <button type="button" id="catalogoCargarMas" class="btn btn-secundario">
+        Cargar más productos <i class="fa-solid fa-chevron-down"></i>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- CALCULADORA DE IMPRESIÓN -->
+<!-- CAMBIAR PRECIOS AQUÍ: editar js/calculadora.js -->
+<!-- ============================================= -->
+<section id="calculadora" class="seccion calculadora">
+  <div class="contenedor">
+
+    <div class="calculadora-tarjeta" data-aos="fade-up">
+
+      <div class="calculadora-texto">
+        <span class="eyebrow eyebrow-claro">Calculadora</span>
+        <h2 class="titulo-seccion titulo-claro">Calcula tu impresión al instante</h2>
+        <p class="subtitulo-seccion subtitulo-claro">
+          Un precio referencial, en segundos. El valor final se confirma al
+          recibir tu archivo.
+        </p>
+      </div>
+
+      <div class="calculadora-formulario">
+
+        <div class="campo-calculadora">
+          <label for="calcHojas">Cantidad de hojas</label>
+          <input type="number" id="calcHojas" min="1" value="1">
+        </div>
+
+        <div class="campo-calculadora">
+          <label for="calcColor">Color</label>
+          <select id="calcColor">
+            <option value="byn">Blanco y negro</option>
+            <option value="color">A color</option>
+          </select>
+        </div>
+
+        <div class="campo-calculadora">
+          <label for="calcTamano">Tamaño</label>
+          <select id="calcTamano">
+            <option value="A4">A4</option>
+            <option value="Carta">Carta</option>
+            <option value="Oficio">Oficio</option>
+          </select>
+        </div>
+
+        <div class="campo-calculadora">
+          <label for="calcLados">Impresión</label>
+          <select id="calcLados">
+            <option value="simple">Simple</option>
+            <option value="doble">Doble cara</option>
+          </select>
+        </div>
+
+        <div class="campo-calculadora">
+          <label for="calcPapel">Tipo de papel</label>
+          <select id="calcPapel">
+            <option value="normal">Normal</option>
+            <option value="bond">Bond</option>
+            <option value="couche">Couché</option>
+            <option value="cartulina">Cartulina</option>
+          </select>
+        </div>
+
+        <div class="calculadora-total">
+          <span>Total estimado</span>
+          <strong>$<span id="calcTotal">0.00</span></strong>
+        </div>
+
+        <!-- CAMBIAR NÚMERO DE WHATSAPP AQUÍ -->
+        <a href="https://wa.me/593967245131" id="calcWhatsapp" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          <i class="fa-brands fa-whatsapp"></i> Confirmar por WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- SUBIDA DE ARCHIVOS -->
+<!-- Interfaz únicamente, no hay backend conectado -->
+<!-- CONECTAR SERVIDOR AQUÍ: ver comentario dentro de js/uploader.js -->
+<!-- ============================================= -->
+<section id="subir-archivo" class="seccion subida">
+  <div class="contenedor contenedor-angosto">
+
+    <div class="encabezado-seccion" data-aos="fade-up">
+      <span class="eyebrow">Envíanos tu archivo</span>
+      <h2 class="titulo-seccion">Sube tu documento para imprimir</h2>
+      <p class="subtitulo-seccion">
+        Acepta PDF, Word, Excel, PowerPoint e imágenes. Nosotros lo revisamos y
+        te confirmamos el total por WhatsApp.
+      </p>
+    </div>
+
+    <form id="formSubida" class="subida-caja" data-aos="fade-up">
+
+      <label for="inputArchivos" class="subida-zona" id="subidaZona">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <p><strong>Arrastra tus archivos aquí</strong> o haz clic para seleccionarlos</p>
+        <span>PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, JPG, PNG</span>
+        <input type="file" id="inputArchivos" name="archivos"
+               accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,image/*" multiple hidden>
+      </label>
+
+      <ul id="listaArchivos" class="subida-lista"></ul>
+
+      <button type="submit" class="btn btn-primario">Enviar archivos</button>
+
+      <p id="subidaMensaje" class="subida-mensaje"></p>
+
+    </form>
+
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- TRABAJOS ACADÉMICOS -->
+<!-- CAMBIAR TEXTOS AQUÍ -->
+<!-- ============================================= -->
+<section id="academicos" class="seccion academicos">
+  <div class="contenedor academicos-grid">
+
+    <div class="academicos-texto" data-aos="fade-right">
+      <span class="eyebrow">Trabajos Académicos</span>
+      <h2 class="titulo-seccion">Tu trabajo, entregado a tiempo y bien hecho</h2>
+      <p class="subtitulo-seccion">
+        Desde una investigación hasta el diseño final de tu tesis, te acompañamos
+        en cada etapa del trabajo.
+      </p>
+
+      <ul class="academicos-lista">
+        <li><i class="fa-solid fa-check"></i> Investigaciones</li>
+        <li><i class="fa-solid fa-check"></i> Ensayos</li>
+        <li><i class="fa-solid fa-check"></i> Informes</li>
+        <li><i class="fa-solid fa-check"></i> Presentaciones</li>
+        <li><i class="fa-solid fa-check"></i> Formato APA</li>
+        <li><i class="fa-solid fa-check"></i> Currículums</li>
+        <li><i class="fa-solid fa-check"></i> Digitalización</li>
+        <li><i class="fa-solid fa-check"></i> Diseño de documentos</li>
+      </ul>
+
+      <!-- CAMBIAR NÚMERO DE WHATSAPP AQUÍ -->
+      <a href="https://wa.me/593967245131?text=Hola%20PEKE-ARI,%20necesito%20ayuda%20con%20un%20trabajo%20académico"
+         target="_blank" rel="noopener" class="btn btn-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
+      </a>
+    </div>
+
+    <div class="academicos-visual" data-aos="fade-left">
+      <div class="academicos-tarjeta-flotante">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <h3>Formato APA garantizado</h3>
+        <p>Revisamos citas, referencias y estructura antes de la entrega final.</p>
+      </div>
+      <!-- CAMBIAR IMAGEN AQUÍ -->
+      <img src="img/banners/banner.jpg" alt="Trabajos académicos PEKE-ARI" class="academicos-imagen" loading="lazy" width="600" height="500">
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- PRODUCTOS DESTACADOS -->
+<!-- Se generan automáticamente desde los productos con etiqueta -->
+<!-- en js/catalogo.js (nuevo, oferta o vendido) -->
+<!-- ============================================= -->
+<section id="destacados" class="seccion destacados">
+  <div class="contenedor">
+
+    <div class="encabezado-seccion" data-aos="fade-up">
+      <span class="eyebrow">Destacados</span>
+      <h2 class="titulo-seccion">Lo que más se lleva la gente</h2>
+      <p class="subtitulo-seccion">Nuestros productos más pedidos, nuevos y en oferta.</p>
+    </div>
+
+    <div class="destacados-grid" id="destacadosGrid">
+      <!-- Tarjetas generadas por JavaScript (ver js/script.js) -->
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- PROMOCIONES -->
+<!-- CAMBIAR PROMOCIONES AQUÍ: editar js/slider.js -->
+<!-- ============================================= -->
+<section id="promociones" class="seccion promociones">
+  <div class="contenedor">
+
+    <div class="encabezado-seccion" data-aos="fade-up">
+      <span class="eyebrow eyebrow-claro">Promociones</span>
+      <h2 class="titulo-seccion titulo-claro">Ofertas de la semana</h2>
+    </div>
+
+    <div class="slider" id="slider">
+      <div class="slider-pista" id="sliderPista">
+        <!-- Slides generados por JavaScript (ver js/slider.js) -->
+      </div>
+
+      <button class="slider-flecha slider-flecha-izq" id="sliderPrev" aria-label="Promoción anterior">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="slider-flecha slider-flecha-der" id="sliderNext" aria-label="Siguiente promoción">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <div class="slider-puntos" id="sliderPuntos"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- GALERÍA -->
+<!-- CAMBIAR IMÁGENES AQUÍ: editar el arreglo "imagenesGaleria" en js/script.js -->
+<!-- ============================================= -->
+<section id="galeria" class="seccion galeria">
+  <div class="contenedor">
+
+    <div class="encabezado-seccion" data-aos="fade-up">
+      <span class="eyebrow">Galería</span>
+      <h2 class="titulo-seccion">Así se ve PEKE-ARI</h2>
+      <p class="subtitulo-seccion">
+        Un vistazo a nuestro local, productos y trabajos entregados a nuestros clientes.
+      </p>
+    </div>
+
+    <!-- Filtro de la galería por categoría -->
+    <div class="catalogo-filtros" id="galeriaFiltros" data-aos="fade-up">
+      <button class="filtro-btn activo" data-categoria="todos">Todas</button>
+      <button class="filtro-btn" data-categoria="Local">Local</button>
+      <button class="filtro-btn" data-categoria="Productos">Productos</button>
+      <button class="filtro-btn" data-categoria="Trabajos">Trabajos</button>
+      <button class="filtro-btn" data-categoria="Eventos">Eventos</button>
+    </div>
+
+    <!-- Contenedor donde script.js inyecta las fotos -->
+    <div class="galeria-grid" id="galeriaGrid">
+      <!-- Miniaturas generadas por JavaScript (ver js/script.js) -->
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox de la galería (se abre al hacer clic en una foto) -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-cerrar" id="lightboxCerrar" aria-label="Cerrar galería">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <button class="lightbox-flecha lightbox-prev" id="lightboxPrev" aria-label="Foto anterior">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  <figure class="lightbox-figura">
+    <img src="" alt="" id="lightboxImagen">
+    <figcaption id="lightboxTitulo"></figcaption>
+  </figure>
+  <button class="lightbox-flecha lightbox-next" id="lightboxNext" aria-label="Foto siguiente">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+  <span class="lightbox-contador" id="lightboxContador"></span>
+</div>
+
+<!-- ============================================= -->
+<!-- TESTIMONIOS -->
+<!-- CAMBIAR TESTIMONIOS AQUÍ: editar el arreglo "testimonios" en js/script.js -->
+<!-- ============================================= -->
+<section id="testimonios" class="seccion testimonios">
+  <div class="contenedor contenedor-angosto">
+
+    <div class="encabezado-seccion" data-aos="fade-up">
+      <span class="eyebrow">Testimonios</span>
+      <h2 class="titulo-seccion">Lo que dicen nuestros clientes</h2>
+      <p class="subtitulo-seccion">
+        La confianza de quienes ya nos visitaron es nuestra mejor carta de presentación.
+      </p>
+    </div>
+
+    <div class="testimonios-carrusel" id="testimoniosCarrusel" data-aos="fade-up">
+      <div class="testimonios-pista" id="testimoniosPista">
+        <!-- Tarjetas generadas por JavaScript (ver js/script.js) -->
+      </div>
+    </div>
+
+    <div class="testimonios-puntos" id="testimoniosPuntos"></div>
+
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- PREGUNTAS FRECUENTES -->
+<!-- CAMBIAR PREGUNTAS AQUÍ: copiar un bloque ".faq-item" -->
+<!-- ============================================= -->
+<section id="preguntas" class="seccion preguntas">
+  <div class="contenedor contenedor-angosto">
+
+    <div class="encabezado-seccion" data-aos="fade-up">
+      <span class="eyebrow">Preguntas Frecuentes</span>
+      <h2 class="titulo-seccion">Resolvemos tus dudas</h2>
+      <p class="subtitulo-seccion">
+        Si no encuentras respuesta a tu pregunta, escríbenos por WhatsApp.
+      </p>
+    </div>
+
+    <div class="faq-lista" id="faqLista" data-aos="fade-up">
+
+      <!-- CAMBIAR PREGUNTA/RESPUESTA AQUÍ -->
+      <div class="faq-item">
+        <button class="faq-pregunta" aria-expanded="false">
+          <span>¿Cuál es el horario de atención?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-respuesta">
+          <p>Atendemos de lunes a viernes de 8:00 a. m. a 7:00 p. m. y sábados de
+            9:00 a. m. a 2:00 p. m. Puedes ver el detalle en la sección de Contacto.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta" aria-expanded="false">
+          <span>¿Cómo envío mi archivo para imprimir?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-respuesta">
+          <p>Puedes subirlo directamente desde la sección "Sube tu documento" de esta
+            página o enviarlo por WhatsApp. Te confirmamos el total antes de imprimir.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta" aria-expanded="false">
+          <span>¿Hacen trabajos académicos completos, no solo impresión?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-respuesta">
+          <p>Sí. Apoyamos en investigaciones, ensayos, informes, presentaciones,
+            formato APA, digitación y diseño de documentos. Puedes ver más en la
+            sección "Trabajos Académicos".</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta" aria-expanded="false">
+          <span>¿El precio de la calculadora de impresión es el precio final?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-respuesta">
+          <p>Es un valor referencial calculado al instante. El total final se confirma
+            al recibir tu archivo, por si requiere algún ajuste especial.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta" aria-expanded="false">
+          <span>¿Venden productos por mayor, para instituciones?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-respuesta">
+          <p>Sí, manejamos precios especiales para pedidos al por mayor y para
+            instituciones educativas. Escríbenos por WhatsApp para cotizar.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pregunta" aria-expanded="false">
+          <span>¿Hacen despachos a domicilio?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="faq-respuesta">
+          <p>Sí, dentro de la zona local. El costo de envío depende de la distancia y
+            se confirma contigo antes de despachar tu pedido.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- ESTADO DEL LOCAL -->
+<!-- Se calcula automáticamente según el horario configurado -->
+<!-- CAMBIAR HORARIOS AQUÍ: editar el objeto "horarios" en js/horario.js -->
+<!-- ============================================= -->
+<section id="estado-local" class="seccion estado-local">
+  <div class="contenedor contenedor-angosto">
+
+    <div class="estado-tarjeta" data-aos="fade-up">
+
+      <div class="estado-badge" id="estadoBadge">
+        <span class="estado-punto" id="estadoPunto" aria-hidden="true"></span>
+        <span id="estadoTexto">Verificando horario...</span>
+      </div>
+
+      <p class="estado-detalle" id="estadoDetalle"></p>
+
+      <!-- Horario mostrado como referencia visual (el estado real lo calcula js/horario.js) -->
+      <div class="estado-horario-lista">
+        <div class="estado-dia" data-dia="1,2,3,4,5">
+          <span>Lunes a Viernes</span>
+          <span>8:00 a. m. – 7:00 p. m.</span>
+        </div>
+        <div class="estado-dia" data-dia="6">
+          <span>Sábado</span>
+          <span>9:00 a. m. – 2:00 p. m.</span>
+        </div>
+        <div class="estado-dia" data-dia="0">
+          <span>Domingo</span>
+          <span>Cerrado</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- CONTACTO -->
+<!-- CAMBIAR CORREO / DIRECCIÓN / WHATSAPP / MAPA AQUÍ -->
+<!-- ============================================= -->
+<section id="contacto" class="seccion contacto">
+  <div class="contenedor">
+
+    <div class="encabezado-seccion" data-aos="fade-up">
+      <span class="eyebrow">Contacto</span>
+      <h2 class="titulo-seccion">Hablemos de tu próximo proyecto</h2>
+      <p class="subtitulo-seccion">
+        Escríbenos, visítanos o envíanos tu mensaje. Te respondemos al instante.º
+      </p>
+    </div>
+
+    <div class="contacto-grid">
+
+      <!-- Formulario de contacto: se envía a /api/contacto (backend Node/Express),
+           protegido con honeypot, reCAPTCHA v3, rate limiting y validación.
+           Ver server/routes/contacto.js y js/script.js -->
+      <!-- CAMBIAR CLAVE DE RECAPTCHA AQUÍ (clave pública/"site key" de
+           https://www.google.com/recaptcha/admin). Si se deja vacío, el
+           formulario sigue funcionando protegido por honeypot + rate limit. -->
+      <form id="formContacto" class="contacto-formulario" data-aos="fade-right" data-recaptcha-sitekey="" novalidate>
+
+        <!-- Honeypot invisible anti-bots: un usuario real nunca ve ni llena
+             este campo (oculto con la clase "campo-trampa"); si llega con
+             contenido, el backend descarta el envío silenciosamente. -->
+        <div class="campo-trampa" aria-hidden="true">
+          <label for="contactoEmpresaWeb">No llenar este campo</label>
+          <input type="text" id="contactoEmpresaWeb" name="empresa_web" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="campo-contacto">
+          <label for="contactoNombre">Nombre</label>
+          <input type="text" id="contactoNombre" name="nombre" placeholder="Tu nombre completo" required maxlength="80">
+        </div>
+
+        <div class="campo-contacto">
+          <label for="contactoCorreo">Correo</label>
+          <input type="email" id="contactoCorreo" name="correo" placeholder="tucorreo@ejemplo.com" required maxlength="120">
+        </div>
+
+        <div class="campo-contacto">
+          <label for="contactoTelefono">Teléfono</label>
+          <input type="tel" id="contactoTelefono" name="telefono" placeholder="09XXXXXXXX" required maxlength="15" pattern="[0-9+\s-]{7,15}">
+        </div>
+
+        <div class="campo-contacto">
+          <label for="contactoMensaje">Mensaje</label>
+          <textarea id="contactoMensaje" name="mensaje" rows="4" placeholder="Cuéntanos qué necesitas..." required maxlength="1000"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primario">Enviar mensaje</button>
+
+        <!-- CAMBIAR NÚMERO DE WHATSAPP AQUÍ -->
+        <a href="https://wa.me/593967245131" id="contactoWhatsapp" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          <i class="fa-brands fa-whatsapp"></i> Escribir por WhatsApp
+        </a>
+
+        <p id="contactoMensajeEstado" class="contacto-mensaje-estado"></p>
+
+      </form>
+
+      <!-- Información de contacto y mapa -->
+      <div class="contacto-info" data-aos="fade-left">
+
+        <div class="contacto-dato">
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <h3>Dirección</h3>
+            <!-- CAMBIAR DIRECCIÓN AQUÍ -->
+            <p>Av. Parrales y Guales, jipijapa, Manabi</p>
+          </div>
+        </div>
+
+        <div class="contacto-dato">
+          <i class="fa-solid fa-envelope"></i>
+          <div>
+            <h3>Correo</h3>
+            <!-- CAMBIAR CORREO AQUÍ -->
+            <p><a href="mailto:contacto@pekeari.com">contacto@pekeari.com</a></p>
+          </div>
+        </div>
+
+        <div class="contacto-dato">
+          <i class="fa-solid fa-clock"></i>
+          <div>
+            <h3>Horario</h3>
+            <!-- CAMBIAR HORARIO AQUÍ -->
+            <p>Lun - Vie: 8:00 a. m. - 7:00 p. m.<br>Sáb: 9:00 a. m. - 2:00 p. m.</p>
+          </div>
+        </div>
+
+        <!-- Mapa — CAMBIAR UBICACIÓN AQUÍ (reemplazar el src del iframe con tu dirección en Google Maps) -->
+        <div class="contacto-mapa">
+          <iframe
+            src="https://www.google.com/maps?q=-1.346376, -80.570108&output=embed"
+            width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación de PEKE-ARI">
+          </iframe>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- FOOTER -->
+<!-- CAMBIAR REDES SOCIALES / DATOS AQUÍ -->
+<!-- ============================================= -->
+<footer class="footer">
+  <div class="contenedor footer-grid">
+
+    <div class="footer-marca">
+      <!-- CAMBIAR LOGO AQUÍ (versión para footer) -->
+      <img src="img/logo/logotipo.png" alt="PEKE-ARI" class="footer-logo" loading="lazy">
+      <!-- CAMBIAR DESCRIPCIÓN AQUÍ -->
+      <p>Papelería, útiles escolares y universitarios, impresiones, copias, trabajos
+        académicos y snacks. Todo en un solo lugar.</p>
+
+      <!-- CAMBIAR REDES SOCIALES AQUÍ -->
+      <div class="footer-redes">
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://wa.me/593967245131" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-columna">
+      <h4>Navegación</h4>
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#academicos">Trabajos Académicos</a>
+      <a href="#galeria">Galería</a>
+    </div>
+
+    <div class="footer-columna">
+      <h4>Horario</h4>
+      <!-- CAMBIAR HORARIO AQUÍ -->
+      <p>Lunes a Viernes<br>8:00 a. m. – 7:00 p. m.</p>
+      <p>Sábado<br>9:00 a. m. – 2:00 p. m.</p>
+    </div>
+
+    <div class="footer-columna">
+      <h4>Ubicación</h4>
+      <!-- CAMBIAR DIRECCIÓN AQUÍ -->
+      <p><i class="fa-solid fa-location-dot"></i> Av. Parrales y Guales, jipijapa, Manabi</p>
+      <p><i class="fa-solid fa-envelope"></i> contacto@pekeari.com</p>
+    </div>
+
+  </div>
+
+  <div class="footer-linea">
+    <!-- El año se actualiza solo (ver js/script.js) -->
+    <p>&copy; <span id="footerAnio"></span> PEKE-ARI. Todos los derechos reservados.</p>
+    <p><a href="estadisticas.html" class="footer-enlace-discreto">Panel interno</a></p>
+  </div>
+</footer>
+
+<!-- ============================================= -->
+<!-- SCRIPTS -->
+<!-- ============================================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+<script src="js/darkmode.js" defer></script>
+<script src="js/catalogo.js" defer></script>
+<script src="js/buscador.js" defer></script>
+<script src="js/calculadora.js" defer></script>
+<script src="js/uploader.js" defer></script>
+<script src="js/slider.js" defer></script>
+<script src="js/horario.js" defer></script>
+<script src="js/script.js" defer></script>
+
+</body>
+</html>

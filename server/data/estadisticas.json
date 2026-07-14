@@ -1,0 +1,86 @@
+{
+  "visitas": [
+    {
+      "fecha": "2026-07-14",
+      "hora": "06:13:52",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Edge",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/",
+      "esNueva": true
+    },
+    {
+      "fecha": "2026-07-14",
+      "hora": "06:17:02",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Edge",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/",
+      "esNueva": false
+    },
+    {
+      "fecha": "2026-07-14",
+      "hora": "06:17:05",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Edge",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/",
+      "esNueva": false
+    },
+    {
+      "fecha": "2026-07-14",
+      "hora": "06:17:07",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Edge",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/",
+      "esNueva": false
+    },
+    {
+      "fecha": "2026-07-14",
+      "hora": "06:21:33",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Edge",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/",
+      "esNueva": false
+    },
+    {
+      "fecha": "2026-07-14",
+      "hora": "06:25:18",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Edge",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/",
+      "esNueva": false
+    },
+    {
+      "fecha": "2026-07-14",
+      "hora": "06:27:13",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Chrome",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/",
+      "esNueva": false
+    },
+    {
+      "fecha": "2026-07-14",
+      "hora": "06:28:56",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Chrome",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/",
+      "esNueva": false
+    }
+  ],
+  "mensajesContacto": [],
+  "totalHistorico": 8
+}

@@ -1,0 +1,84 @@
+================================================================
+ PEKE-ARI — LICENSE.txt
+================================================================
+
+Copyright (c) 2026 PEKE-ARI
+Todos los derechos reservados.
+
+----------------------------------------------------------------
+ 1. SOBRE ESTA LICENCIA
+----------------------------------------------------------------
+Este proyecto (código HTML, CSS y JavaScript propio de PEKE-ARI,
+en los archivos index.html, css/style.css, css/responsive.css,
+css/darkmode.css, css/animations.css y todos los archivos dentro
+de js/) fue creado específicamente para el negocio PEKE-ARI.
+
+Se otorga permiso para:
+
+  - Usar, copiar y modificar este código libremente para operar,
+    mantener y actualizar el sitio web de PEKE-ARI.
+  - Adaptarlo para otros proyectos propios de PEKE-ARI (por
+    ejemplo, una segunda sucursal).
+
+No se otorga permiso para:
+
+  - Revender, redistribuir o reutilizar este código (o una
+    versión modificada) como plantilla comercial para terceros
+    sin autorización previa por escrito de PEKE-ARI.
+  - Usar el nombre "PEKE-ARI", su logotipo o su identidad visual
+    en otro proyecto que no sea de este negocio.
+
+----------------------------------------------------------------
+ 2. SIN GARANTÍA
+----------------------------------------------------------------
+Este software se entrega "tal cual" ("AS IS"), sin garantía de
+ningún tipo, expresa o implícita, incluyendo pero no limitándose a
+garantías de comerciabilidad o idoneidad para un propósito
+particular. En ningún caso el/los desarrollador(es) serán
+responsables por reclamos, daños u otras responsabilidades
+derivadas del uso de este software.
+
+Se recomienda probar el sitio completo (formularios, calculadora,
+catálogo, enlaces de WhatsApp, mapa, etc.) antes de publicarlo, y
+mantener copias de respaldo antes de cada actualización.
+
+----------------------------------------------------------------
+ 3. CONTENIDO Y RECURSOS PROPIOS DEL NEGOCIO
+----------------------------------------------------------------
+Los siguientes elementos NO están cubiertos por esta licencia de
+código, ya que son propiedad exclusiva de PEKE-ARI y deben usarse
+solo con su autorización:
+
+  - Logotipo e identidad visual de PEKE-ARI (carpeta img/logo/)
+  - Fotografías propias del negocio, productos y local
+    (carpetas img/productos/, img/galeria/, img/banners/)
+  - Textos de "Nosotros" (historia, misión, visión, valores) y
+    demás contenido descriptivo del negocio
+
+----------------------------------------------------------------
+ 4. LIBRERÍAS Y RECURSOS DE TERCEROS
+----------------------------------------------------------------
+Este sitio utiliza los siguientes recursos externos, cargados vía
+CDN, cada uno bajo su propia licencia (no incluida en este
+archivo, ya que no forman parte del código propio del proyecto):
+
+  - Font Awesome (iconos)      — https://fontawesome.com
+    Licencia: Font Awesome Free License
+
+  - Google Fonts: Poppins y Plus Jakarta Sans (tipografías)
+    https://fonts.google.com
+    Licencia: SIL Open Font License 1.1
+
+  - AOS — Animate On Scroll Library (animaciones al hacer scroll)
+    https://michalsnik.github.io/aos/
+    Licencia: MIT License
+
+Estas librerías son de uso libre (gratuitas, incluso para uso
+comercial) según sus propias licencias, vigentes en la fecha de
+entrega de este proyecto. Se recomienda revisar sus términos
+actuales si el sitio se usa por mucho tiempo, ya que las licencias
+de terceros pueden cambiar.
+
+================================================================
+ Fin de LICENSE.txt — PEKE-ARI
+================================================================

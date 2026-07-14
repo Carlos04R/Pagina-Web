@@ -1,0 +1,152 @@
+/* ================================================================
+   PEKE-ARI — DARKMODE.CSS
+   Se activa cuando <html> tiene el atributo data-tema="oscuro"
+   (lo controla js/darkmode.js).
+   CAMBIAR AQUÍ los colores si quieres otra paleta de modo oscuro.
+   ================================================================ */
+
+html[data-tema="oscuro"]{
+
+  /* --- Reasignación de roles semánticos --- */
+  --color-fondo:           #12171B;
+  --color-fondo-alt:       #1A2126;
+  --color-texto:           #F4F6F7;
+  --color-texto-suave:     #AEB8BE;
+  --color-borde:           #2A333A;
+
+  /* --- Nueva superficie para tarjetas (antes usaban blanco fijo) --- */
+  --color-superficie:      #1A2126;
+  --color-superficie-alt:  #212A30;
+
+  /* --- Sombras más sutiles sobre fondo oscuro --- */
+  --sombra-suave: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --sombra-media: 0 20px 45px rgba(0, 0, 0, 0.5);
+}
+
+/* ================================================================
+   TARJETAS Y SUPERFICIES
+   Estos componentes usaban var(--color-blanco) de forma fija, por
+   lo que no cambiaban solo con la reasignación de variables de
+   arriba. Se corrigen aquí de forma explícita.
+   ================================================================ */
+html[data-tema="oscuro"] .servicio-tarjeta,
+html[data-tema="oscuro"] .producto-tarjeta,
+html[data-tema="oscuro"] .destacado-tarjeta,
+html[data-tema="oscuro"] .testimonio-tarjeta,
+html[data-tema="oscuro"] .faq-item,
+html[data-tema="oscuro"] .mini-tarjeta,
+html[data-tema="oscuro"] .estado-dia,
+html[data-tema="oscuro"] .academicos-tarjeta-flotante,
+html[data-tema="oscuro"] .calculadora-tarjeta{
+  background: var(--color-superficie);
+  border-color: var(--color-borde);
+}
+
+html[data-tema="oscuro"] .filtro-btn{
+  background: var(--color-superficie);
+  border-color: var(--color-borde);
+  color: var(--color-texto);
+}
+
+html[data-tema="oscuro"] .filtro-btn.activo{
+  background: var(--color-negro);
+  border-color: var(--color-negro);
+}
+
+/* Textos que usaban negro fijo sobre las tarjetas de arriba */
+html[data-tema="oscuro"] .servicio-link,
+html[data-tema="oscuro"] .producto-precio,
+html[data-tema="oscuro"] .calculadora-total strong{
+  color: var(--color-texto);
+}
+
+/* ================================================================
+   CAMPOS DE FORMULARIO (contacto, catálogo, calculadora)
+   ================================================================ */
+html[data-tema="oscuro"] .campo-contacto input,
+html[data-tema="oscuro"] .campo-contacto textarea,
+html[data-tema="oscuro"] .campo-calculadora input,
+html[data-tema="oscuro"] .campo-calculadora select{
+  background: var(--color-superficie-alt);
+  border-color: var(--color-borde);
+  color: var(--color-texto);
+}
+
+html[data-tema="oscuro"] .campo-contacto input::placeholder,
+html[data-tema="oscuro"] .campo-contacto textarea::placeholder{
+  color: var(--color-texto-suave);
+}
+
+html[data-tema="oscuro"] .contacto-formulario{
+  background: var(--color-superficie);
+  border-color: var(--color-borde);
+}
+
+/* ================================================================
+   NAVBAR (estado "activo" al hacer scroll)
+   ================================================================ */
+html[data-tema="oscuro"] #navBar.activo{
+  background: rgba(18, 23, 27, 0.92); /* --color-fondo con transparencia */
+  box-shadow: var(--sombra-suave);
+}
+
+html[data-tema="oscuro"] #navBar.activo .nav-logo,
+html[data-tema="oscuro"] #navBar.activo .nav-links a,
+html[data-tema="oscuro"] #navBar.activo #btnHamburguesa span{
+  color: var(--color-texto);
+}
+html[data-tema="oscuro"] #navBar.activo #btnHamburguesa span{
+  background: var(--color-texto);
+}
+
+html[data-tema="oscuro"] #navBar.activo .nav-buscador,
+html[data-tema="oscuro"] #navBar.activo #btnModoOscuro{
+  background: var(--color-superficie-alt);
+}
+
+html[data-tema="oscuro"] #navBar.activo .nav-buscador input{
+  color: var(--color-texto);
+}
+html[data-tema="oscuro"] #navBar.activo .nav-buscador input::placeholder{
+  color: var(--color-texto-suave);
+}
+
+/* ================================================================
+   SUBIDA DE ARCHIVOS — zona de arrastre en hover/drag
+   ================================================================ */
+html[data-tema="oscuro"] .subida-zona:hover,
+html[data-tema="oscuro"] .subida-zona.arrastrando{
+  background: rgba(20, 184, 166, 0.12); /* turquesa translúcido sobre fondo oscuro */
+}
+
+/* ================================================================
+   BARRA DE DESPLAZAMIENTO (scrollbar) Y SELECCIÓN DE TEXTO
+   ================================================================ */
+html[data-tema="oscuro"] ::-webkit-scrollbar-track{
+  background: var(--color-fondo);
+}
+html[data-tema="oscuro"] ::-webkit-scrollbar-thumb{
+  background: var(--color-borde);
+}
+html[data-tema="oscuro"] ::selection{
+  background: var(--color-turquesa);
+  color: var(--color-blanco);
+}
+
+/* ================================================================
+   TRANSICIÓN SUAVE AL CAMBIAR DE TEMA
+   Evita que el cambio se vea brusco en los elementos principales.
+   ================================================================ */
+body,
+.servicio-tarjeta,
+.producto-tarjeta,
+.destacado-tarjeta,
+.testimonio-tarjeta,
+.faq-item,
+.mini-tarjeta,
+#navBar,
+.campo-contacto input,
+.campo-contacto textarea{
+  transition: background var(--transicion-media), color var(--transicion-media),
+              border-color var(--transicion-media);
+}

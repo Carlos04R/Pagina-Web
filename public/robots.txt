@@ -1,0 +1,9 @@
+# PEKE-ARI — robots.txt
+# CAMBIAR DOMINIO AQUÍ si el sitio final usa otra URL
+
+User-agent: *
+Allow: /
+Disallow: /estadisticas.html
+Disallow: /api/
+
+Sitemap: https://www.pekeari.com/sitemap.xml

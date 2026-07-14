@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+
+<script>
+  (function(){
+    try {
+      var CLAVE = "peke-ari-tema";
+      var guardado = localStorage.getItem(CLAVE);
+      var prefiereOscuro = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (guardado === "oscuro" || (!guardado && prefiereOscuro)) {
+        document.documentElement.setAttribute("data-tema", "oscuro");
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estadísticas | PEKE-ARI</title>
+<meta name="description" content="Panel interno de estadísticas de visitas del sitio PEKE-ARI.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="img/logo/logotipo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/darkmode.css">
+<link rel="stylesheet" href="css/estadisticas.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+</head>
+<body>
+
+<header id="navBar" class="navbar-simple">
+  <nav class="nav-contenedor">
+    <a href="index.html" class="nav-logo">
+      <img src="img/logo/panda.png" alt="Logotipo PEKE-ARI">
+      <span>PEKE-ARI</span>
+    </a>
+    <div class="nav-herramientas">
+      <a href="index.html" class="btn btn-secundario btn-pequeno">
+        <i class="fa-solid fa-arrow-left"></i> Volver al sitio
+      </a>
+      <button id="btnModoOscuro" aria-label="Cambiar modo oscuro">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="seccion estadisticas-panel">
+  <div class="contenedor">
+
+    <div class="encabezado-seccion" data-aos="fade-up">
+      <span class="eyebrow">Panel interno</span>
+      <h1 class="titulo-seccion">Estadísticas de Visitas</h1>
+      <p class="subtitulo-seccion">
+        Actividad real del sitio, registrada automáticamente por el backend
+        (server/routes/estadisticas.js). Las IP se almacenan anonimizadas.
+      </p>
+    </div>
+
+    <!-- Contadores principales -->
+    <div class="estadisticas-contadores" data-aos="fade-up">
+      <div class="estadistica-tarjeta">
+        <i class="fa-solid fa-calendar-day"></i>
+        <span class="contador-numero" id="estHoy" data-contador="0">0</span>
+        <p>Visitas hoy</p>
+      </div>
+      <div class="estadistica-tarjeta">
+        <i class="fa-solid fa-calendar-week"></i>
+        <span class="contador-numero" id="estSemana" data-contador="0">0</span>
+        <p>Visitas esta semana</p>
+      </div>
+      <div class="estadistica-tarjeta">
+        <i class="fa-solid fa-calendar"></i>
+        <span class="contador-numero" id="estMes" data-contador="0">0</span>
+        <p>Visitas este mes</p>
+      </div>
+      <div class="estadistica-tarjeta estadistica-tarjeta-destacada">
+        <i class="fa-solid fa-chart-line"></i>
+        <span class="contador-numero" id="estTotal" data-contador="0">0</span>
+        <p>Total histórico</p>
+      </div>
+    </div>
+
+    <!-- Gráfico simple de barras: últimos 14 días -->
+    <div class="estadisticas-grafico-caja" data-aos="fade-up">
+      <h2>Actividad de los últimos 14 días</h2>
+      <div class="estadisticas-grafico" id="estGrafico" role="img" aria-label="Gráfico de barras de visitas por día">
+        <!-- Barras generadas por js/estadisticas.js -->
+      </div>
+    </div>
+
+    <!-- Desgloses: navegador y sistema operativo -->
+    <div class="estadisticas-desglose" data-aos="fade-up">
+
+      <div class="estadistica-lista">
+        <h2><i class="fa-solid fa-globe"></i> Navegadores</h2>
+        <ul id="estNavegadores"><!-- generado por JS --></ul>
+      </div>
+
+      <div class="estadistica-lista">
+        <h2><i class="fa-solid fa-desktop"></i> Sistemas operativos</h2>
+        <ul id="estSistemas"><!-- generado por JS --></ul>
+      </div>
+
+    </div>
+
+    <p class="estadisticas-nota" id="estMensajeError"></p>
+
+  </div>
+</main>
+
+<footer class="footer footer-simple">
+  <div class="contenedor">
+    <p>&copy; <span id="footerAnio"></span> PEKE-ARI — Panel interno de estadísticas.</p>
+  </div>
+</footer>
+
+<script src="js/darkmode.js" defer></script>
+<script src="js/estadisticas.js" defer></script>
+
+</body>
+</html>

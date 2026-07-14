@@ -1,0 +1,117 @@
+/* ================================================================
+   PEKE-ARI — css/mejoras.css
+   Estilos añadidos en la evolución del sitio (catálogo por
+   categorías, orden, paginación progresiva, etiqueta "Agotado" y
+   honeypot anti-spam). Se mantiene en un archivo aparte para no
+   mezclar con css/style.css y facilitar el mantenimiento futuro.
+   Usa las mismas variables --color-*/--radio-*/--fuente-* del
+   sitio, así que respeta automáticamente la identidad visual.
+   ================================================================ */
+
+/* --- Utilidad de accesibilidad: oculta visualmente pero deja
+   el contenido disponible para lectores de pantalla --- */
+.visualmente-oculto{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Honeypot invisible (anti-bots) ---
+   Oculto para personas pero presente en el DOM/tabulación evitada,
+   para que los bots que autocompletan formularios caigan en la
+   trampa sin que un usuario real note nada distinto. */
+.campo-trampa{
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --- Controles del catálogo: buscador + selector de orden --- */
+.catalogo-controles{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.catalogo-controles .catalogo-buscador{
+  margin: 0;
+  flex: 1 1 320px;
+}
+
+.catalogo-orden select{
+  padding: 13px 20px;
+  border-radius: 100px;
+  border: 1px solid var(--color-borde);
+  background: var(--color-fondo-alt);
+  color: var(--color-texto);
+  font-family: var(--fuente-display);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.catalogo-orden select:focus-visible,
+.catalogo-buscador input:focus-visible{
+  outline: 2px solid var(--color-turquesa);
+  outline-offset: 2px;
+}
+
+/* --- Etiqueta "Agotado" y tarjeta deshabilitada --- */
+.etiqueta-agotado{ background: var(--color-gris-oscuro); }
+
+.producto-agotado{ opacity: 0.65; }
+
+.producto-agotado .producto-imagen img{ filter: grayscale(60%); }
+
+.producto-btn-agotado{
+  font-family: var(--fuente-display);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 9px 16px;
+  border-radius: 100px;
+  background: var(--color-borde);
+  color: var(--color-texto-suave);
+  cursor: not-allowed;
+}
+
+/* --- Botón "Cargar más" (paginación progresiva) --- */
+.catalogo-cargar-mas-caja{
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+#catalogoCargarMas{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- Enlace discreto al panel interno de estadísticas (footer) --- */
+.footer-enlace-discreto{
+  color: rgba(255,255,255,0.35);
+  font-size: 12px;
+  text-decoration: underline;
+  transition: var(--transicion-rapida);
+}
+
+.footer-enlace-discreto:hover{ color: rgba(255,255,255,0.7); }
+
+/* --- Responsive: controles del catálogo en móvil --- */
+@media (max-width: 640px){
+  .catalogo-controles{ flex-direction: column; align-items: stretch; }
+  .catalogo-orden select{ width: 100%; }
+}
