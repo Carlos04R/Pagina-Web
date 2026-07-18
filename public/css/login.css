@@ -1,0 +1,137 @@
+/* ================================================================
+   PEKE-ARI — css/login.css
+   Estilos exclusivos de login.html. Reutiliza las variables
+   --color-*/--radio-*/--fuente-* y la clase .campo-contacto ya
+   existentes en css/style.css para mantener la misma identidad
+   visual del resto del sitio (formulario de contacto, botones,
+   modo oscuro automático vía [data-tema="oscuro"]).
+   ================================================================ */
+
+.login-panel{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 20px 60px;
+}
+
+.login-tarjeta{
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-fondo-alt);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-lg);
+  padding: 40px 34px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+/* --- Animación de entrada suave (sin depender de AOS) --- */
+.login-animar-entrada{
+  animation: loginAparecer 0.6s cubic-bezier(.4,0,.2,1) both;
+}
+
+@keyframes loginAparecer{
+  from{ opacity: 0; transform: translateY(24px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .login-animar-entrada{ animation: none; }
+}
+
+.login-encabezado{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-logo{
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 14px;
+}
+
+.login-encabezado h1{
+  font-family: var(--fuente-display);
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.login-encabezado p{
+  color: var(--color-texto-suave);
+  font-size: 14px;
+}
+
+.login-formulario{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* --- Input con ícono a la izquierda, reutilizando .campo-contacto --- */
+.login-input-icono{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-input-icono i:first-child{
+  position: absolute;
+  left: 16px;
+  color: var(--color-texto-suave);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.login-input-icono input{
+  width: 100%;
+  padding-left: 42px !important;
+}
+
+.login-mostrar-password{
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--color-texto-suave);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+}
+
+.login-mostrar-password:hover{ color: var(--color-turquesa); }
+
+.login-btn-ingresar{
+  width: 100%;
+  justify-content: center;
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-btn-cargando{ font-size: 14px; }
+
+.login-mensaje-error{
+  display: none;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-rosa-oscuro);
+  background: var(--color-rosa-suave);
+  border-radius: var(--radio-sm);
+  padding: 10px 14px;
+  animation: loginErrorAparecer 0.3s ease both;
+}
+
+.login-mensaje-error.visible{ display: block; }
+
+@keyframes loginErrorAparecer{
+  from{ opacity: 0; transform: translateY(-6px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px){
+  .login-tarjeta{ padding: 32px 22px; }
+  .login-panel{ padding-top: 120px; }
+}
