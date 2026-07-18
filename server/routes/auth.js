@@ -68,13 +68,29 @@ router.post("/login", limitadorLogin, reglasLogin, (req, res) => {
   }
 
   const { usuario, contrasena } = req.body;
+  
+  let rol = null;
 
-  const usuarioValido = compararSeguro(usuario, usuarioEsperado);
-  const passwordValido = compararSeguro(contrasena, passwordEsperado);
+  if (
+  compararSeguro(usuario, process.env.ADMIN_USER) &&
+  compararSeguro(contrasena, process.env.ADMIN_PASSWORD)
+) {
+  rol = "admin";
+}
 
-  if (!usuarioValido || !passwordValido) {
-    return res.status(401).json({ ok: false, error: "Usuario o contraseña incorrectos." });
-  }
+  if (
+  compararSeguro(usuario, process.env.CLIENTE_USER) &&
+  compararSeguro(contrasena, process.env.CLIENTE_PASSWORD)
+) {
+  rol = "cliente";
+}
+
+  if (!rol) {
+  return res.status(401).json({
+    ok:false,
+    error:"Usuario o contraseña incorrectos."
+  });
+}
 
   // Regenerar el ID de sesión al iniciar sesión evita "session
   // fixation" (que alguien reutilice un ID de sesión que ya tenía
@@ -85,10 +101,15 @@ router.post("/login", limitadorLogin, reglasLogin, (req, res) => {
       return res.status(500).json({ ok: false, error: "Error interno. Intenta de nuevo." });
     }
 
-    req.session.autenticado = true;
-    req.session.usuario = usuario;
+   req.session.autenticado = true;
+   req.session.usuario = usuario;
+   req.session.rol = rol;
 
-    res.status(200).json({ ok: true, redirect: "/estadisticas.html" });
+    res.status(200).json({
+      ok:true,
+      redirect: rol === "admin"
+    ? "/estadisticas.html"
+    : "/index.html"
   });
 });
 

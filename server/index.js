@@ -69,6 +69,13 @@ app.use("/api", limitadorApiGeneral, rutasEstadisticas);
 app.use("/api", limitadorContacto, rutasContacto);
 
 /* ---------------------------------------------------------------
+   Página principal
+--------------------------------------------------------------- */
+app.get("/", (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, "login.html"));
+});
+
+/* ---------------------------------------------------------------
    Archivos estáticos del sitio (frontend original, sin cambios de
    identidad visual — ver /public)
 --------------------------------------------------------------- */
