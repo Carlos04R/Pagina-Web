@@ -79,8 +79,68 @@
       "dispositivo": "escritorio",
       "pagina": "/",
       "esNueva": false
+    },
+    {
+      "fecha": "2026-07-18",
+      "hora": "17:31:12",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Chrome",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/index.html",
+      "esNueva": true
+    },
+    {
+      "fecha": "2026-07-18",
+      "hora": "17:31:14",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Chrome",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/index.html",
+      "esNueva": false
+    },
+    {
+      "fecha": "2026-07-18",
+      "hora": "17:31:26",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Chrome",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/index.html",
+      "esNueva": false
+    },
+    {
+      "fecha": "2026-07-18",
+      "hora": "17:39:56",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Chrome",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/index.html",
+      "esNueva": false
+    },
+    {
+      "fecha": "2026-07-18",
+      "hora": "17:39:57",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Chrome",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/index.html",
+      "esNueva": false
+    },
+    {
+      "fecha": "2026-07-18",
+      "hora": "17:40:48",
+      "ipHash": "d25d0446375b196d",
+      "navegador": "Chrome",
+      "sistemaOperativo": "Windows",
+      "dispositivo": "escritorio",
+      "pagina": "/index.html",
+      "esNueva": false
     }
   ],
   "mensajesContacto": [],
-  "totalHistorico": 8
+  "totalHistorico": 14
 }

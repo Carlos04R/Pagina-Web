@@ -9,22 +9,23 @@
 
 .login-panel{
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 140px 20px 60px;
+  padding: 40px 20px;
+  box-sizing: border-box;
 }
 
 .login-tarjeta{
-  width: 100%;
-  max-width: 420px;
+  width: min(100%, 420px);
+  box-sizing: border-box;
   background: var(--color-fondo-alt);
   border: 1px solid var(--color-borde);
   border-radius: var(--radio-lg);
   padding: 40px 34px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.08);
 }
-
 /* --- Animación de entrada suave (sin depender de AOS) --- */
 .login-animar-entrada{
   animation: loginAparecer 0.6s cubic-bezier(.4,0,.2,1) both;
@@ -132,6 +133,11 @@
 }
 
 @media (max-width: 480px){
-  .login-tarjeta{ padding: 32px 22px; }
-  .login-panel{ padding-top: 120px; }
+  .login-tarjeta{
+    padding: 28px 20px;
+  }
+
+  .login-panel{
+    padding: 20px 15px;
+  }
 }

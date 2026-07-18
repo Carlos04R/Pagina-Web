@@ -102,7 +102,10 @@ router.post("/login", limitadorLogin, reglasLogin, (req, res) => {
 req.session.regenerate((error) => {
   if (error) {
     console.error("[Auth] Error regenerando sesión:", error);
-    return res.status(500).json({ ok: false, error: "Error interno. Intenta de nuevo." });
+    return res.status(500).json({ 
+      ok: false, 
+      error: "Error interno. Intenta de nuevo." 
+    });
   }
 
   req.session.autenticado = true;
@@ -114,8 +117,9 @@ req.session.regenerate((error) => {
     redirect: rol === "admin"
       ? "/estadisticas.html"
       : "/index.html"
-    });
   });
+});
+});
 /**
  * POST /api/logout
  * Destruye la sesión actual (botón "Cerrar sesión").

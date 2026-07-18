@@ -20,11 +20,13 @@ import morgan from "morgan";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
+import session from "express-session";
 
 import { cabecerasSeguridad, permissionsPolicy } from "./middleware/security.js";
 import { limitadorApiGeneral, limitadorContacto } from "./middleware/rateLimit.js";
 import rutasContacto from "./routes/contacto.js";
 import rutasEstadisticas from "./routes/estadisticas.js";
+import rutasAuth from "./routes/auth.js";
 
 dotenv.config();
 
@@ -48,6 +50,19 @@ app.use(compression());
 app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"));
 app.use(express.json({ limit: "20kb" })); // límite bajo: los formularios son cortos, evita payloads abusivos
 app.use(express.urlencoded({ extended: true, limit: "20kb" }));
+app.use(
+  session({
+    name: "peke_ari_sid",
+    secret: process.env.SESSION_SECRET || "peke-ari-secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 1000 * 60 * 60 * 4
+    }
+  })
+);
 
 /* ---------------------------------------------------------------
    Redirección a HTTPS en producción (cuando el sitio corre detrás
@@ -67,7 +82,7 @@ if (process.env.NODE_ENV === "production") {
 --------------------------------------------------------------- */
 app.use("/api", limitadorApiGeneral, rutasEstadisticas);
 app.use("/api", limitadorContacto, rutasContacto);
-
+app.use("/api", rutasAuth);
 /* ---------------------------------------------------------------
    Página principal
 --------------------------------------------------------------- */

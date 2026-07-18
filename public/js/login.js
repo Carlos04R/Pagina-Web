@@ -17,15 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
   /* --- Si ya hay una sesión activa, no tiene sentido mostrar el
      login: se manda directo al panel. --- */
   fetch("/api/sesion")
-    .then((r) => r.json())
+   .then((r) => r.json())
     .then((datos) => {
-    if (datos.ok && datos.autenticado) {
-    window.location.href = datos.redirect || "/index.html";
-}
-      }
-    })
-    .catch(() => { /* si falla, simplemente se queda en el login */ });
-
+     if (datos.ok && datos.autenticado) {
+      window.location.href = datos.redirect || "/index.html";
+    }
+  })
+  .catch(() => {
+    // Si falla, simplemente se queda en el login.
+  });
   /* --- Mostrar / ocultar contraseña --- */
   if (btnMostrarPassword && inputContrasena) {
     btnMostrarPassword.addEventListener("click", () => {

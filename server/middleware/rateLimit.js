@@ -37,3 +37,14 @@ export const limitadorApiGeneral = rateLimit({
   legacyHeaders: false,
   message: { ok: false, error: "Demasiadas peticiones. Intenta de nuevo en un momento." },
 });
+
+export const limitadorLogin = rateLimit({
+  windowMs: minutos(15),
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    ok: false,
+    error: "Demasiados intentos de inicio de sesión. Espera unos minutos."
+  },
+});
