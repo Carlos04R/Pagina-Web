@@ -54,19 +54,23 @@ router.post("/login", limitadorLogin, reglasLogin, (req, res) => {
     });
   }
 
-  const usuarioEsperado = process.env.ADMIN_USER;
-  const passwordEsperado = process.env.ADMIN_PASSWORD;
+  const adminUsuario = process.env.ADMIN_USER;
+  const adminPassword = process.env.ADMIN_PASSWORD;
 
-  // Si el sitio aún no configuró sus credenciales en .env, se
-  // bloquea el acceso por completo (falla "cerrado", nunca abierto).
-  if (!usuarioEsperado || !passwordEsperado) {
-    console.error("[Auth] ADMIN_USER / ADMIN_PASSWORD no están configurados en .env");
+  const clienteUsuario = process.env.CLIENTE_USER;
+  const clientePassword = process.env.CLIENTE_PASSWORD;
+
+
+  if (
+    (!adminUsuario || !adminPassword) &&
+    (!clienteUsuario || !clientePassword)
+  ) {
+    console.error("[Auth] No hay credenciales configuradas.");
     return res.status(500).json({
-      ok: false,
-      error: "El panel aún no tiene credenciales configuradas. Contacta al administrador del sitio.",
+      ok:false,
+      error:"No hay usuarios configurados."
     });
   }
-
   const { usuario, contrasena } = req.body;
   
   let rol = null;
@@ -95,24 +99,23 @@ router.post("/login", limitadorLogin, reglasLogin, (req, res) => {
   // Regenerar el ID de sesión al iniciar sesión evita "session
   // fixation" (que alguien reutilice un ID de sesión que ya tenía
   // preparado antes de que el usuario se autenticara).
-  req.session.regenerate((error) => {
-    if (error) {
-      console.error("[Auth] Error regenerando sesión:", error);
-      return res.status(500).json({ ok: false, error: "Error interno. Intenta de nuevo." });
-    }
+req.session.regenerate((error) => {
+  if (error) {
+    console.error("[Auth] Error regenerando sesión:", error);
+    return res.status(500).json({ ok: false, error: "Error interno. Intenta de nuevo." });
+  }
 
-   req.session.autenticado = true;
-   req.session.usuario = usuario;
-   req.session.rol = rol;
+  req.session.autenticado = true;
+  req.session.usuario = usuario;
+  req.session.rol = rol;
 
-    res.status(200).json({
-      ok:true,
-      redirect: rol === "admin"
-    ? "/estadisticas.html"
-    : "/index.html"
+  res.status(200).json({
+    ok: true,
+    redirect: rol === "admin"
+      ? "/estadisticas.html"
+      : "/index.html"
+    });
   });
-});
-
 /**
  * POST /api/logout
  * Destruye la sesión actual (botón "Cerrar sesión").

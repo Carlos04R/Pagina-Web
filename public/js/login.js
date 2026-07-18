@@ -19,8 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("/api/sesion")
     .then((r) => r.json())
     .then((datos) => {
-      if (datos.ok && datos.autenticado) {
-        window.location.href = "/estadisticas.html";
+    if (datos.ok && datos.autenticado) {
+    window.location.href = datos.redirect || "/index.html";
+}
       }
     })
     .catch(() => { /* si falla, simplemente se queda en el login */ });
@@ -86,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        window.location.href = datos.redirect || "/estadisticas.html";
+        window.location.href = datos.redirect || "/index.html";
 
       } catch (error) {
         mostrarError("Error de conexión. Verifica tu internet e inténtalo de nuevo.");
