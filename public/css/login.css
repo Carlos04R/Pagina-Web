@@ -1,7 +1,7 @@
 /* ================================================================
    PEKE-ARI — css/login.css
    Estilos exclusivos de login.html. Reutiliza las variables
-   --color-*/--radio-*/--fuente-* y la clase .campo-contacto ya
+   --color-* / --radio-* / --fuente-* y la clase .campo-contacto ya
    existentes en css/style.css para mantener la misma identidad
    visual del resto del sitio (formulario de contacto, botones,
    modo oscuro automático vía [data-tema="oscuro"]).
